@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <artist-search />
+        <Search />
     </div>
 </template>
 
 <script>
-import ArtistSearch from './components/ArtistSearch.vue';
+import Search from './components/Search.vue';
 
 export default {
     name: 'App',
     components: {
-        ArtistSearch,
+        Search,
     },
 };
 </script>
@@ -19,6 +19,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
 * {
     font-family: 'Quicksand', sans-serif;
-    background-color: #242727;
+    /* background-color: #242727;
+    color: white; */
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 </style>
