@@ -26,6 +26,7 @@ export default {
     components: {
         ArtistsResult,
     },
+    props: ['test'],
     data() {
         return {
             artistName: '',
@@ -35,6 +36,7 @@ export default {
     methods: {
         handleSubmit() {
             this.artistName = this.name;
+            this.$emit('artistName', this.name);
         },
     },
 };

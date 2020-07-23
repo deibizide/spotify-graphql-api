@@ -8,10 +8,12 @@
                 </div>-->
                 <div v-if="data" class="artistSearch__container">
                     <div v-for="(bandInfo, i) in data.queryArtists" :key="i">
+                        <!-- <router-link to="/artist-page"> -->
                         <div v-if="bandInfo.image" class="artistSearch__name-image">
                             <img :src="bandInfo.image" width="200" height="200" />
                             <p>{{bandInfo.name}}</p>
                         </div>
+                        <!-- </router-link> -->
                     </div>
                 </div>
             </template>
@@ -50,7 +52,6 @@ export default {
     border-radius: 50%;
     margin: 10px;
     text-align: center;
-    color: white;
 }
 
 .artistSearch__name-image img {
