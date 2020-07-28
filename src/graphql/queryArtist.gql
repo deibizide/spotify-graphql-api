@@ -1,0 +1,10 @@
+query queryArtist($artistName: String!) {
+    queryArtists(byName: $artistName) {
+        id
+        name
+        albums {
+            name
+            image
+        }
+    }
+}

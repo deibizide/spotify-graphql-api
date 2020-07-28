@@ -1,28 +1,36 @@
 <template>
     <div id="app">
-        <Search @artistName="artistName" />
-        <!-- <artist-page /> -->
+        <div>
+            <artist-page :artistName="name" :artistId="id" />
+        </div>
+        <Search @artistName="setArtistName" />
+        <artists-result @artistId="setArtistId" :artistName="name" />
     </div>
 </template>
 
 <script>
 import Search from './components/Search.vue';
-// import ArtistPage from './components/ArtistPage.vue';
+import ArtistsResult from './components/ArtistsResult.vue';
+import ArtistPage from './components/ArtistPage.vue';
 
 export default {
     components: {
         Search,
-        // ArtistPage,
+        ArtistsResult,
+        ArtistPage,
     },
     data() {
         return {
             name: '',
+            id: '',
         };
     },
     methods: {
-        artistName(name) {
+        setArtistName(name) {
             this.name = name;
-            console.log(this.name);
+        },
+        setArtistId(id) {
+            this.id = id;
         },
     },
 };

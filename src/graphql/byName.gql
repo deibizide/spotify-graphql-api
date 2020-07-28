@@ -1,6 +1,0 @@
-query queryArtists($name: String!) {
-    queryArtists(byName: $name) {
-        name
-        image
-    }
-}

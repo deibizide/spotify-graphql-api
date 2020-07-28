@@ -1,0 +1,7 @@
+query queryArtists($artistName: String!) {
+    queryArtists(byName: $artistName) {
+        id
+        name
+        image
+    }
+}

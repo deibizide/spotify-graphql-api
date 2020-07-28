@@ -1,19 +1,17 @@
 <template>
     <div class="hello">
-        <ApolloQuery :query="require('../graphql/byName.gql')" :variables="{name}">
-            <template v-slot="{result: {loading, error, data}}" class="container">
-                <h1 v-if="name" class="artistSearch__header">Showing Artist for {{name }}</h1>
-                <!-- <div v-if="error">
-                    <p>Error: {{error}}}</p>
-                </div>-->
+        <ApolloQuery v-if="artistName" :query="require('../graphql/queryArtists.gql')" :variables="{ artistName }">
+            <template v-slot="{ result: { loading, error, data } }" class="container">
+                <h1 v-if="artistName" class="artistSearch__header">Showing Artist for {{ artistName }}</h1>
+                <div v-if="error">
+                    <p>There is an Error: {{ error }}}</p>
+                </div>
                 <div v-if="data" class="artistSearch__container">
-                    <div v-for="(bandInfo, i) in data.queryArtists" :key="i">
-                        <!-- <router-link to="/artist-page"> -->
+                    <div v-for="bandInfo in data.queryArtists" :key="bandInfo.id" @click="handleArtistId(bandInfo.id)">
                         <div v-if="bandInfo.image" class="artistSearch__name-image">
                             <img :src="bandInfo.image" width="200" height="200" />
-                            <p>{{bandInfo.name}}</p>
+                            <p>{{ bandInfo.name }}</p>
                         </div>
-                        <!-- </router-link> -->
                     </div>
                 </div>
             </template>
@@ -24,14 +22,9 @@
 <script>
 export default {
     props: ['artistName'],
-    data() {
-        return {
-            name: '',
-        };
-    },
-    watch: {
-        artistName: function() {
-            this.name = this.artistName;
+    methods: {
+        handleArtistId(id) {
+            this.$emit('artistId', id);
         },
     },
 };
@@ -55,6 +48,7 @@ export default {
 }
 
 .artistSearch__name-image img {
+    cursor: pointer;
     border-radius: 50%;
 }
 

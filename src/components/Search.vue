@@ -16,26 +16,18 @@
                 <p>Search</p>
             </div>
         </div>
-        <artists-result :artist-name="artistName" />
     </div>
 </template>
 
 <script>
-import ArtistsResult from './ArtistsResult.vue';
 export default {
-    components: {
-        ArtistsResult,
-    },
-    props: ['test'],
     data() {
         return {
-            artistName: '',
             name: '',
         };
     },
     methods: {
         handleSubmit() {
-            this.artistName = this.name;
             this.$emit('artistName', this.name);
         },
     },
