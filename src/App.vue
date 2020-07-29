@@ -1,20 +1,22 @@
 <template>
     <div id="app">
-        <div>
-            <artist-page :artistName="name" :artistId="id" />
-        </div>
-        <Search @artistName="setArtistName" />
-        <artists-result @artistId="setArtistId" :artistName="name" />
+        <Header />
+        <Search @artistName="setArtistName" class="search__component" />
+        <artists-result v-if="toggleComponent" @artistId="setArtistId" :artistName="name" />
+        <artist-page :v-if="!toggleComponent" :artistName="name" :artistId="id" />
     </div>
 </template>
 
 <script>
+import Header from './components/Header.vue';
+
 import Search from './components/Search.vue';
 import ArtistsResult from './components/ArtistsResult.vue';
 import ArtistPage from './components/ArtistPage.vue';
 
 export default {
     components: {
+        Header,
         Search,
         ArtistsResult,
         ArtistPage,
@@ -23,23 +25,32 @@ export default {
         return {
             name: '',
             id: '',
+            toggleComponent: false,
         };
     },
     methods: {
         setArtistName(name) {
             this.name = name;
+            this.toggleComponent = true;
         },
         setArtistId(id) {
             this.id = id;
+            this.toggleComponent = false;
         },
     },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
 * {
-    font-family: 'Quicksand', sans-serif;
+    font-family: sans-serif;
+    margin: 0;
+}
+.search__component {
+    position: absolute;
+    top: 30px;
+    left: 150px;
+    /* width: 100%; */
 }
 
 #app {

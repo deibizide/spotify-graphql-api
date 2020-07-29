@@ -40,9 +40,9 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0% 15% 0% 15%;
 }
 .artistSearch__name-image {
-    border-radius: 50%;
     margin: 10px;
     text-align: center;
 }
@@ -50,6 +50,7 @@ export default {
 .artistSearch__name-image img {
     cursor: pointer;
     border-radius: 50%;
+    border-width: 0 100px 150px 100px;
 }
 
 h3 {
