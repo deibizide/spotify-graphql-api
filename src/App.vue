@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header />
+        <!-- <Header /> -->
         <Search @artistName="setArtistName" class="search__component" />
         <artists-result v-if="toggleComponent" @artistId="setArtistId" :artistName="name" />
         <artist-page :v-if="!toggleComponent" :artistName="name" :artistId="id" />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Header from './components/Header.vue';
+// import Header from './components/Header.vue';
 
 import Search from './components/Search.vue';
 import ArtistsResult from './components/ArtistsResult.vue';
@@ -16,7 +16,7 @@ import ArtistPage from './components/ArtistPage.vue';
 
 export default {
     components: {
-        Header,
+        // Header,
         Search,
         ArtistsResult,
         ArtistPage,
@@ -46,12 +46,9 @@ export default {
     font-family: sans-serif;
     margin: 0;
 }
-.search__component {
-    position: absolute;
-    top: 30px;
-    left: 150px;
-    /* width: 100%; */
-}
+/* .search__component {
+    width: 100%;
+} */
 
 #app {
     display: flex;

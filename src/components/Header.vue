@@ -1,16 +1,18 @@
 <template>
-    <div>
+    <div class="header__container">
         <img src="../assets/logo.png" alt="Picture Header" class="header__logo" />
-        <img src="../assets/header.png" style="width: 100%;" alt="Picture Header" />
-        <div class="header__text-container"></div>
+        <!-- <img src="../assets/header.png" style="width: 100%;" alt="Picture Header" /> -->
     </div>
 </template>
 
 <style scoped>
+.header__container {
+    background-color: #509cf5;
+    height: 50vh;
+    width: 100%;
+}
 .header__logo {
-    position: absolute;
-    width: 10%;
-    left: 150px;
-    margin-top: 30px;
+    width: 20%;
+    margin: 50px 50px;
 }
 </style>

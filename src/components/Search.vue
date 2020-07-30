@@ -1,7 +1,8 @@
 <template>
     <div class="search-container">
+        <img src="../assets/logo.png" alt="Picture Header" class="search__spotify-logo" />
         <div class="search__search-container">
-            <div>
+            <div class="search__text-header">
                 <h1>Search without limits</h1>
                 <h2>Fill out your search and click on "Search".</h2>
             </div>
@@ -47,22 +48,30 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #509cf5;
+    height: 50vh;
+    width: 100%;
+}
+
+.search__spotify-logo {
+    width: 20%;
+    margin-top: 50px;
 }
 
 .search__search-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
     margin-top: 50px;
+    text-align: center;
+    color: #ffffff;
 }
 .search__search-container h1 {
     margin: 20px 0px 0px 0px;
-    font-size: 80px;
-    color: #ffffff;
+    font-size: 2rem;
 }
 .search__search-container h2 {
-    font-size: 30px;
-    color: #ffffff;
+    font-size: 1.5rem;
     font-weight: 200;
     margin: 20px 0px 20px 0px;
 }
@@ -70,10 +79,11 @@ export default {
 #search__input {
     border: hidden;
     border-bottom: 1px solid #ffffff;
-    font-size: 20px;
+    font-size: 2rem;
     background-color: transparent;
-    margin: 20px 0px 20px 0px;
+    margin-bottom: 20px;
     color: #ffffff;
+    width: 30rem;
 }
 
 label {
