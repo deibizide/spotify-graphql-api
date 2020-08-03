@@ -1,7 +1,16 @@
+// todo There is an error when reaching ArtistPage - 'queryArtists' of null"
+// Check inspector
 <template>
     <div>
         <ApolloQuery v-if="artistId" :query="require('../graphql/queryArtist.gql')" :variables="{ artistName }">
             <template v-slot="{ result: { loading, error, data } }" class="container">
+                <div v-if="error">
+                    <p>There is an Error: {{ error }}}</p>
+                </div>
+                <div v-if="loading">
+                    <p>Loading</p>
+                </div>
+                <h1 v-if="artistName" class="artistPage__header">Showing Artist for {{ artistName }}</h1>
                 <div v-for="artist in data.queryArtists" :key="artist.id">
                     <div v-if="artistId === artist.id" class="artistPage__container">
                         <div v-for="(artistAlbum, i) in artist.albums" :key="i">
@@ -37,7 +46,13 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 0% 15% 0% 15%;
+    padding: 0% 5% 0% 5%;
+}
+
+.artistPage__header {
+    text-align: center;
+    font-size: 2rem;
+    padding: 3% 0% 3% 0%;
 }
 
 .artistPage__album-container {

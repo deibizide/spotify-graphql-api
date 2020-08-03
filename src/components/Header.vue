@@ -1,7 +1,7 @@
 <template>
     <div class="header__container">
         <img src="../assets/logo.png" alt="Picture Header" class="header__logo" />
-        <!-- <img src="../assets/header.png" style="width: 100%;" alt="Picture Header" /> -->
+        <img src="../assets/girl.png" style="width: 100%;" alt="Picture Header" />
     </div>
 </template>
 

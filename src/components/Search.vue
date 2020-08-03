@@ -1,23 +1,25 @@
 <template>
-    <div class="search-container">
-        <img src="../assets/logo.png" alt="Picture Header" class="search__spotify-logo" />
+    <div class="search__container">
         <div class="search__search-container">
+            <img src="../assets/logo.png" alt="Picture Header" class="search__spotify-logo" />
             <div class="search__text-header">
                 <h1>Search without limits</h1>
                 <h2>Fill out your search and click on "Search".</h2>
             </div>
-            <div :class="isAnimatited ? 'animation' : ''">
+            <div>
                 <input
-                    @click="handleAnimation"
                     id="search__input"
                     v-on:keyup.enter="handleSubmit"
                     type="text"
                     v-model="name"
+                    placeholder="Type an Artist Name"
                 />
-                <label for="search__input">Type an Artist Name</label>
             </div>
             <div @click="handleSubmit" class="search__button">
                 <p>SEARCH</p>
+            </div>
+            <div class="search__img-container">
+                <img src="../assets/girl.png" alt="Picture of a girl" />
             </div>
         </div>
     </div>
@@ -28,15 +30,11 @@ export default {
     data() {
         return {
             name: '',
-            isAnimatited: false,
         };
     },
     methods: {
         handleSubmit() {
             this.$emit('artistName', this.name);
-        },
-        handleAnimation() {
-            this.isAnimatited = true;
         },
     },
 };
@@ -44,36 +42,43 @@ export default {
 
 
 <style lang="css" scoped>
-.search-container {
+.search__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #509cf5;
-    height: 50vh;
+    height: 60vh;
     width: 100%;
 }
 
 .search__spotify-logo {
-    width: 20%;
+    width: 400px;
     margin-top: 50px;
 }
 
 .search__search-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    text-align: center;
+    justify-content: center;
+    /* margin-top: 50px; */
+    height: 100%;
+    margin-left: 10%;
     color: #ffffff;
 }
 .search__search-container h1 {
     margin: 20px 0px 0px 0px;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 .search__search-container h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 200;
     margin: 20px 0px 20px 0px;
+}
+
+.search__img-container {
+    position: absolute;
+    top: 81px;
+    right: 10px;
+    margin-right: 10%;
 }
 
 #search__input {
@@ -81,33 +86,18 @@ export default {
     border-bottom: 1px solid #ffffff;
     font-size: 2rem;
     background-color: transparent;
-    margin-bottom: 20px;
     color: #ffffff;
     width: 30rem;
-}
-
-label {
-    color: #ffffff;
-    position: absolute;
-    font-size: 20px;
-    cursor: text;
-    transform: translateY(-25px);
-    transition: transform 0.3s ease;
-    left: 0;
-    bottom: 50px;
-}
-
-/* Input Animation Styles */
-.animation label {
-    transform: translateY(-55px);
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
 }
 
 .search__input:focus,
 input:focus {
     outline: none;
+    color: #ffffff;
+}
+
+input::placeholder {
+    font-size: 1rem;
     color: #ffffff;
 }
 
@@ -121,9 +111,35 @@ input:focus {
     height: 50px;
     color: white;
     cursor: pointer;
+    margin: 20px 0px 20px 0px;
 }
 
 .search__button:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+@media only screen and (max-width: 1350px) {
+    .search__img-container {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .search__container {
+        height: 40vh;
+    }
+    .search__spotify-logo {
+        width: 200px;
+    }
+    .search__search-container h1 {
+        font-size: 2rem;
+    }
+    .search__search-container h2 {
+        font-size: 1rem;
+        font-weight: 200;
+    }
+    #search__input {
+        width: 20rem;
+    }
 }
 </style>

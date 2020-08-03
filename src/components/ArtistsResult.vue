@@ -6,6 +6,9 @@
                 <div v-if="error">
                     <p>There is an Error: {{ error }}}</p>
                 </div>
+                <div v-if="loading">
+                    <p>Loading</p>
+                </div>
                 <div v-if="data" class="artistSearch__container">
                     <div v-for="bandInfo in data.queryArtists" :key="bandInfo.id" @click="handleArtistId(bandInfo.id)">
                         <div v-if="bandInfo.image" class="artistSearch__name-image">
@@ -34,13 +37,14 @@ export default {
 <style scoped>
 .artistSearch__header {
     text-align: center;
-    color: white;
+    font-size: 2rem;
+    padding: 3% 0% 3% 0%;
 }
 .artistSearch__container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 0% 15% 0% 15%;
+    padding: 0% 5% 0% 5%;
 }
 .artistSearch__name-image {
     margin: 10px;
